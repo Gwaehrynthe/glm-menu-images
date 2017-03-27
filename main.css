@@ -3,7 +3,7 @@
     margin-top: 37px;
     margin-right: 5px;
     border: 1px solid lightgrey;
-    padding: 5px;
+    padding: 10px;
     position: relative;
     min-height: 190px;
 }
@@ -13,7 +13,7 @@
     max-height: 100px; 
     width: 100px;
     display: block;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 .menu-image-header{
     margin: 0 0 5px 0;
@@ -24,20 +24,23 @@
 }
 .crop-options{
     position: absolute;
-    right: 125px;
-    top: 5px;
+    right: 75px;
+    top: 10px;
 }
 .crop-value{
     position: absolute;
-    right: 20px;
-    top: 10px;
+    right: 225px;
+    top: 12px;
+    font-weight: bold;
 }
 .image-dimensions{
     position: absolute;
-    top: 50px;
-    right: 100px;
+    top: 75px;
+    right: 105px;
     width: 150px;
 }
 .image-dimensions .image-height, .image-dimensions .image-width{
-    width: 90%;
+    width: 70%;
+    margin-bottom: 10px;
+
 }

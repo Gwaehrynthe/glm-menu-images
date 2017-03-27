@@ -25,3 +25,4 @@ function admin_scripts($hook) {
 add_action( 'admin_enqueue_scripts', 'admin_scripts' );
 
 require_once 'menu_walker_edit.php';
+require_once 'walker_nav_menu.php';
