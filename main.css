@@ -1,9 +1,43 @@
 .image-preview-wrapper{
+    display: none;
     margin-top: 37px;
     margin-right: 5px;
     border: 1px solid lightgrey;
     padding: 5px;
+    position: relative;
+    min-height: 190px;
+}
+.image-preview{
+    width : 100px;
+    height: 100px;
+    max-height: 100px; 
+    width: 100px;
+    display: block;
+    margin-bottom: 35px;
 }
 .menu-image-header{
     margin: 0 0 5px 0;
+}
+.check-image-label{
+    display: inline-block;
+    margin-top: 25px;
+}
+.crop-options{
+    position: absolute;
+    right: 125px;
+    top: 5px;
+}
+.crop-value{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.image-dimensions{
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 150px;
+}
+.image-dimensions .image-height, .image-dimensions .image-width{
+    width: 90%;
 }
