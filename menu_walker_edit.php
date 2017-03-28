@@ -50,7 +50,7 @@ class GLM_Nav_Menu_Item_Custom_Fields {
 		if ( empty($new_fields) )
 			return;
         
-		self::$options['fields'] = self::get_fields_schema( $new_fields );
+		self::$options['fields'] = self::get_fields_model( $new_fields );
         
 		add_filter( 'wp_edit_nav_menu_walker', function () {
 			return 'GLM_Walker_Nav_Menu_Edit';
@@ -61,15 +61,15 @@ class GLM_Nav_Menu_Item_Custom_Fields {
 		add_action( 'save_post', array( __CLASS__, '_save_post' ), 10, 2 );
 	}
     
-	static function get_fields_schema( $new_fields ) {
-		$schema = array();
+	static function get_fields_model( $new_fields ) {
+		$model = array();
 		foreach( $new_fields as $name => $field) {
 			if (empty($field['name'])) {
 				$field['name'] = $name;
 			}
-			$schema[] = $field;
+			$model[] = $field;
 		}
-		return $schema;
+		return $model;
 	}
 	static function get_menu_item_postmeta_key($name) {
 		return '_menu_item_' . $name;
@@ -102,9 +102,13 @@ class GLM_Nav_Menu_Item_Custom_Fields {
                 $field[$crop] = 'selected';
             } 
             
+            // find each field in the template string {field} and replace it with its value
 			$new_fields .= str_replace(
+                // replace the {field} 
 				array_map(function($key){ return '{' . $key . '}'; }, array_keys($field)),
+                // with the value of the field
 				array_values(array_map('esc_attr', $field)),
+                // in the display template string 
 				self::$options['display_template']
 			);
 		}
@@ -113,21 +117,22 @@ class GLM_Nav_Menu_Item_Custom_Fields {
 
     // update the meta input values
 	static function _save_post($post_id, $post) {
+        
 		if ( $post->post_type !== 'nav_menu_item' ) {
 			return $post_id; // prevent weird things from happening
 		}
         $default_width = 150;
         $default_height = 100;
         
-		foreach( self::$options['fields'] as $field_schema ) {
+		foreach( self::$options['fields'] as $field_model ) {
             
-			$form_field_name = 'menu-item-' . $field_schema['name'];
+			$form_field_name = 'menu-item-' . $field_model['name'];
 			// @todo FALSE should always be used as the default $value, otherwise we wouldn't be able to clear checkboxes
 			if (isset($_POST[$form_field_name][$post_id])) {
                 $crop   = $_POST['image-crop-' . $post_id];
                 $width  = $_POST['image-width-' . $post_id];
                 $height = $_POST['image-height-' . $post_id];
-				$key    = self::get_menu_item_postmeta_key($field_schema['name']);
+				$key    = self::get_menu_item_postmeta_key($field_model['name']);
 				$value  = $_POST[$form_field_name][$post_id];
                 
                 if( $width === ''){
