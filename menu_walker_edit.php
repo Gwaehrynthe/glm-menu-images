@@ -13,7 +13,7 @@ class GLM_Nav_Menu_Item_Custom_Fields {
                 <h4 class="menu-image-header"> Menu Item Image </h4>
                 <img id="image-preview-{id}" class="image-preview" src="{value}">
                 <select value="{crop}" name="image-crop-{id}" class="crop-options">
-                    <option disabled {none} value="">Crop</option>
+                    <option disabled {none} value="">None</option>
                     <option {center bottom} value="center bottom">Top</option>
                     <option {center top} value="center top">Bottom</option>
                     <option {center center} value="center center">Top and bottom</option>
@@ -34,6 +34,7 @@ class GLM_Nav_Menu_Item_Custom_Fields {
 	);
     
 	static function setup() {
+        
         // admin section only
 		if ( !is_admin() )
 			return;
@@ -49,7 +50,6 @@ class GLM_Nav_Menu_Item_Custom_Fields {
 			return 'GLM_Walker_Nav_Menu_Edit';
 		});
         
-		//add_filter( 'xteam_nav_menu_item_additional_fields', array( __CLASS__, '_add_fields' ), 10, 5 );
         
         // run the save post function to update post meta
 		add_action( 'save_post', array( __CLASS__, '_save_post' ), 10, 2 );
