@@ -13,10 +13,16 @@ class GLM_Nav_Menu_Item_Custom_Fields {
                 <h4 class="menu-image-header"> Menu Item Image </h4>
                 <img id="image-preview-{id}" class="image-preview" src="{value}">
                 <select value="{crop}" name="image-crop-{id}" class="crop-options">
-                    <option disabled {none} value="">None</option>
+                    <option {none} value="initial">None</option>
                     <option {center bottom} value="center bottom">Top</option>
                     <option {center top} value="center top">Bottom</option>
                     <option {center center} value="center center">Top and bottom</option>
+                    <option {right bottom} value="right bottom">Top</option>
+                    <option {right top} value="right top">Bottom</option>
+                    <option {right center} value="right center">Top and bottom</option>
+                    <option {left bottom} value="left bottom">Top</option>
+                    <option {left top} value="left top">Bottom</option>
+                    <option {left center} value="left center">Top and bottom</option>
                 </select>
                 <span class="crop-value">Crop: </span>
                 <div class="image-dimensions">
@@ -71,7 +77,18 @@ class GLM_Nav_Menu_Item_Custom_Fields {
 
 	static function get_field( $item, $depth, $args ) {
 		$new_fields = '';
-        $crop_options = array('center bottom' => '', 'center top' => '', 'center center' => '');
+        $crop_options = array(
+            'center bottom' => '', 
+            'center top'    => '', 
+            'center center' => '', 
+            'none'          => '',
+            'left top'      => '',
+            'left bottom'   => '',
+            'left center'   => '',
+            'right center'  => '',
+            'right bottom'  => '',
+            'right top'     => ''
+        );
         
 		foreach( self::$options['fields'] as $field ) {
             
