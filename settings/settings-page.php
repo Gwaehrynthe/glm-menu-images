@@ -7,5 +7,5 @@ function menu_images_settings(){
 }
 
 function settings_page(){
-    echo "settings";
+   include 'settings-form.php';
 }

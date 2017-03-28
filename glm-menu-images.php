@@ -23,6 +23,6 @@ function admin_scripts($hook) {
     wp_enqueue_style( 'admin_styles', plugin_dir_url(__FILE__) . '/main.css');
 }
 add_action( 'admin_enqueue_scripts', 'admin_scripts' );
-require_once 'settings-page.php';
-require_once 'menu_walker_edit.php';
-require_once 'walker_nav_menu.php';
+require_once 'settings/settings-page.php';
+require_once 'menu-walkers/menu_walker_edit.php';
+require_once 'menu-walkers/walker_nav_menu.php';
