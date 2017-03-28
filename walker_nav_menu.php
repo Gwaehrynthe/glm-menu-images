@@ -26,13 +26,13 @@ class Glm_Theme_Top_Bar_Walker extends Walker_Nav_Menu {
         parent::start_el( $item_html, $object, $depth, $args );
 
         // Insert style to display page's thumbnail $depth == 0 && has_post_thumbnail((int)$object->object_id
-        $item_style = '';
+        $item_style = ''; 
         $meta_image = get_post_meta($object->ID, '_menu_item_image');
         $meta_image = $meta_image[0];
         $meta_width = get_post_meta($object->ID, '_menu_image_width',true);
         $meta_height = get_post_meta($object->ID, '_menu_image_height',true);
         $meta_crop = get_post_meta($object->ID, '_menu_image_crop',true);
-
+        
         
         if ($meta_image){
 

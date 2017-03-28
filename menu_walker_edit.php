@@ -83,9 +83,7 @@ class GLM_Nav_Menu_Item_Custom_Fields {
             $crop = $field['crop'];
             if( array_key_exists($crop, $crop_options) ){
                 $field[$crop] = 'selected';
-            } else {
-                $field[$crop] = 'no';
-            }
+            } 
             
 			$new_fields .= str_replace(
 				array_map(function($key){ return '{' . $key . '}'; }, array_keys($field)),
@@ -101,18 +99,26 @@ class GLM_Nav_Menu_Item_Custom_Fields {
 		if ( $post->post_type !== 'nav_menu_item' ) {
 			return $post_id; // prevent weird things from happening
 		}
-
+        $default_width = 150;
+        $default_height = 100;
+        
 		foreach( self::$options['fields'] as $field_schema ) {
             
 			$form_field_name = 'menu-item-' . $field_schema['name'];
 			// @todo FALSE should always be used as the default $value, otherwise we wouldn't be able to clear checkboxes
 			if (isset($_POST[$form_field_name][$post_id])) {
-                $crop = $_POST['image-crop-' . $post_id];
-                $width = $_POST['image-width-' . $post_id];
+                $crop   = $_POST['image-crop-' . $post_id];
+                $width  = $_POST['image-width-' . $post_id];
                 $height = $_POST['image-height-' . $post_id];
-				$key = self::get_menu_item_postmeta_key($field_schema['name']);
-				$value = $_POST[$form_field_name][$post_id];
+				$key    = self::get_menu_item_postmeta_key($field_schema['name']);
+				$value  = $_POST[$form_field_name][$post_id];
                 
+                if( $width === ''){
+                    $width = $default_width;    
+                }
+                if($height === ''){
+                    $height = $default_height;
+                }
 				update_post_meta($post_id, $key, $value);
                 update_post_meta($post_id,'_menu_image_crop', $crop);
                 update_post_meta($post_id,'_menu_image_width', $width);
