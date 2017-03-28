@@ -49,6 +49,8 @@
            var _this = $(this);
            _this.siblings('.image-preview').attr("src", '');
            _this.siblings('.image-url').val('');
+           _this.siblings('.image-dimensions').children( $('.image-width').val('') );
+           _this.siblings('.image-dimensions').children( $('.image-height').val('') );
            $(this).fadeOut(300);
         });
         
