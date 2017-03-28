@@ -17,12 +17,12 @@ class GLM_Nav_Menu_Item_Custom_Fields {
                     <option {center bottom} value="center bottom">Top</option>
                     <option {center top} value="center top">Bottom</option>
                     <option {center center} value="center center">Top and bottom</option>
-                    <option {right bottom} value="right bottom">Top</option>
-                    <option {right top} value="right top">Bottom</option>
-                    <option {right center} value="right center">Top and bottom</option>
-                    <option {left bottom} value="left bottom">Top</option>
-                    <option {left top} value="left top">Bottom</option>
-                    <option {left center} value="left center">Top and bottom</option>
+                    <option {right bottom} value="right bottom">Left and Top</option>
+                    <option {right top} value="right top">Left and Bottom</option>
+                    <option {right center} value="right center">Left</option>
+                    <option {left bottom} value="left bottom">Right and Top</option>
+                    <option {left top} value="left top">Right and Bottom</option>
+                    <option {left center} value="left center">Right</option>
                 </select>
                 <span class="crop-value">Crop: </span>
                 <div class="image-dimensions">
